@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o_tr&48x0tu#e!wn&esp*qm(w3jmmbwse3$+wh722+qkk^vt#$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-struk49-boutiqueadogitp-o4omrfdxhbk.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['8000-struk49-boutiqueadogitp-86e4b4mgab3.ws-eu105.gitpod.io']
 
 
 # Application definition
@@ -148,6 +148,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
