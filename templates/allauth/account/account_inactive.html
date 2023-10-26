@@ -1,11 +1,26 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load account %}
 
-{% block head_title %}{% trans "Account Inactive" %}{% endblock %}
+{% block head_title %}{% trans "Confirm E-mail address" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Account Inactive" %}</h1>
+<h1>{% trans "Confirm E-mail address" %}</h1>
 
-<p>{% trans "This account is inactive." %}</p>
+{% if confirmation %}
+{% user_display confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}"></a> is an email
+
+<form method="POST" action="{{ url 'account_confirm_email ' confirmation.key }}">
+    {% csrf token %}
+    <button type="submit"{% trans 'confirm' %}></button>
+</form>
+
+{$ else $}
+
+{% url 'account_email' as email_url %}
+<p>{% blocktrans %}This eamil confirmation expired ot is invalid. Please <a href='{{email_url}}'>Issue another email confirmation request</a></p>
+
+{% endif %}
+
 {% endblock %}
